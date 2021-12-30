@@ -48,5 +48,8 @@ export default Vue.extend({
   data: () => ({
     //
   }),
+  mounted() {
+    //console.log(process.env.VUE_APP_PROXY_URL);
+  },
 });
 </script>
