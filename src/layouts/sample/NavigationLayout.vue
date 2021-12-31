@@ -38,7 +38,7 @@
             <v-list-item-action>
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-item-action>
-            <v-list-item-content @click="clickGotoLink('/sample/helloworld')">
+            <v-list-item-content @click="clickGotoLink(item.link)">
               <v-list-item-title>
                 {{ item.text }}
               </v-list-item-title>
@@ -55,7 +55,7 @@
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title style="width: 300px" class="ml-0 pl-4">
-        <span class="hidden-sm-and-down">Google Contacts</span>
+        <span class="hidden-sm-and-down">Sample Contacts</span>
       </v-toolbar-title>
       <v-text-field
         flat
@@ -97,18 +97,18 @@ export default Vue.extend({
     items: [
       {
         icon: 'mdi-contacts',
-        text: 'Contacts',
+        text: 'HelloWorld',
         link: '/sample/helloworld',
       },
       {
         icon: 'mdi-history',
-        text: 'Frequently contacted',
+        text: 'HelloWorld2',
         link: '/sample/helloworld2',
       },
       {
         icon: 'mdi-content-copy',
         text: 'Duplicates',
-        link: '/sample/helloworld3',
+        link: '',
       },
       {
         icon: 'mdi-chevron-up',
@@ -120,7 +120,7 @@ export default Vue.extend({
           {
             icon: 'mdi-plus',
             text: 'Create label',
-            link: '/sample/helloworld',
+            link: '',
           },
         ],
       },
@@ -131,44 +131,33 @@ export default Vue.extend({
         model: false,
         link: '',
         children: [
-          { icon: 'mdi-plus', text: 'Import', link: '/sample/helloworld' },
-          { icon: 'mdi-plus', text: 'Export', link: '/sample/helloworld' },
-          { icon: 'mdi-plus', text: 'Print', link: '/sample/helloworld' },
+          { icon: 'mdi-plus', text: 'Import', link: '' },
+          { icon: 'mdi-plus', text: 'Export', link: '' },
+          { icon: 'mdi-plus', text: 'Print', link: '' },
           {
             icon: 'mdi-plus',
             text: 'Undo changes',
-            link: '/sample/helloworld',
+            link: '',
           },
           {
             icon: 'mdi-plus',
             text: 'Other contacts',
-            link: '/sample/helloworld',
+            link: '',
           },
         ],
       },
-      { icon: 'mdi-cog', text: 'Settings', link: '/sample/helloworld' },
+      { icon: 'mdi-cog', text: 'Settings', link: '' },
       {
         icon: 'mdi-message',
         text: 'Send feedback',
-        link: '/sample/helloworld',
+        link: '',
       },
-      { icon: 'mdi-help-circle', text: 'Help', link: '/sample/helloworld' },
-      {
-        icon: 'mdi-cellphone-link',
-        text: 'App downloads',
-        link: '/sample/helloworld',
-      },
-      {
-        icon: 'mdi-keyboard',
-        text: 'Go to the old version',
-        link: '/sample/helloworld',
-      },
+      { icon: 'mdi-help-circle', text: 'Help', link: '' },
     ],
   }),
   methods: {
     clickGotoLink(link: string) {
-      console.log('click');
-      if (link !== '') {
+      if (link !== '' && this.$route.path !== link) {
         this.$router.push(link);
       }
     },
