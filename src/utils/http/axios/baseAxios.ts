@@ -141,7 +141,8 @@ export class BaseAxios {
     const { requestOptions } = this.options;
     const opt: RequestOptions = Object.assign({}, requestOptions, options);
 
-    const { beforeRequestHook, transformRequestHook } = transform || {};
+    const { beforeRequestHook, transformRequestHook, requestCatchHook } =
+      transform || {};
     if (beforeRequestHook && isFunction(beforeRequestHook)) {
       conf = beforeRequestHook(conf, opt);
     }
@@ -166,7 +167,11 @@ export class BaseAxios {
           resolve(res as unknown as Promise<T>);
         })
         .catch((e: Error | AxiosError) => {
-          // TODO exception 처리
+          // axois request 실패
+          if (requestCatchHook && isFunction(requestCatchHook)) {
+            reject(requestCatchHook(e, opt));
+            return;
+          }
           reject(e);
         });
     });

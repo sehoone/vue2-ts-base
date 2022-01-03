@@ -1,23 +1,26 @@
 <template>
   <div class="home">
-    <v-btn depressed color="primary" @click="haldleHelloText()">
-      Primary
-    </v-btn>
+    <v-btn color="primary" @click="haldleHelloText()"> call helloworld1 </v-btn>
     <br /><br />
 
-    <p>응답값:{{ helloworldText }}</p>
+    <p>응답값:{{ helloworldText1 }}</p>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
+import { mapGetters } from 'vuex';
+
 export default Vue.extend({
   name: 'Home',
   components: {},
   data() {
-    return {
-      helloworldText: '',
-    };
+    return {};
+  },
+  computed: {
+    ...mapGetters({
+      helloworldText1: 'helloworld/getHelloText' || '',
+    }),
   },
   methods: {
     haldleHelloText() {
@@ -26,7 +29,6 @@ export default Vue.extend({
           'this.$store.state.helloworld ' +
             this.$store.state.helloworld.helloText
         );
-        this.helloworldText = this.$store.state.helloworld.helloText;
       });
     },
   },

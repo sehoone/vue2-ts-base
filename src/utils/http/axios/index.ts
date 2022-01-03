@@ -41,15 +41,12 @@ const transform: AxiosTransform = {
     const { apiUrl, joinPrefix, joinParamsToUrl, formatDate, urlPrefix } =
       options;
 
-    console.log('config.url1 ' + `${urlPrefix}${config.url}`);
     if (joinPrefix) {
       config.url = `${urlPrefix}${config.url}`;
     }
-    console.log('config.url2 ' + config.url);
     if (apiUrl && isString(apiUrl)) {
       config.url = `${apiUrl}${config.url}`;
     }
-    console.log('config.url3 ' + config.url);
     const params = config.params || {};
     const data = config.data || false;
     formatDate && data && !isString(data) && formatRequestDate(data);
@@ -86,7 +83,7 @@ const transform: AxiosTransform = {
         config.params = undefined;
       }
     }
-    console.log('config.url4 ' + config.url);
+    console.log('beforeRequestHook');
     return config;
   },
 
@@ -124,7 +121,6 @@ function createAxios(opt?: Partial<CreateAxiosOptions>) {
   return new BaseAxios(
     deepMerge(
       {
-        authenticationScheme: '',
         timeout: 10 * 1000,
         headers: { 'Content-Type': ContentTypeEnum.JSON },
         transform,
