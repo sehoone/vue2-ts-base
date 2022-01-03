@@ -52,14 +52,16 @@ npm run serve
     ├── service              # service
        ├── 업무              # 업무별 패키지 생성
           ├── moduls         # store 및 비즈니스 로직
-          ├── interface      # type 정의
+          ├── model          # type 정의
           ├── api            # api 정의
+    ├── store                # service
+    ├── types                # global or lib type정의
+    ├── utils                # 유틸
     ├── views                # views
        ├── 업무              # 업무별 패키지 생성
           ├── components     # 업무별 Components
-    ├── utils                # 유틸
     ├── App.vue              # App.vue
-    ├── main.js              # main.js
+    ├── main.ts              # main.js
   ├── browserslistrc         # browserslistrc
   ├── .env.*                 # 환경변수
   ├── eslintrc.js            # eslintrc.js
