@@ -23,7 +23,7 @@
 ### 3. 설치
 ```sh
 git clone ssh://git@git.openobject.net:8824/itswoong/vue2-ts-base.git
-cd vue3-base
+cd vue2-ts-base
 npm install
 
 ```
@@ -54,7 +54,7 @@ npm run serve
           ├── moduls         # store 및 비즈니스 로직
           ├── model          # type 정의
           ├── api            # api 정의
-    ├── store                # service
+    ├── store                # store
     ├── types                # global or lib type정의
     ├── utils                # 유틸
     ├── views                # views
