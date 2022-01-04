@@ -1,0 +1,45 @@
+<template>
+  <div class="home">
+    <p>{{ person1.name }} {{ person1.age }}</p>
+    <p>{{ person2.name }} {{ person2.age }}</p>
+    <p>{{ company1 }} {{ company2.company }}</p>
+
+    <button @click="handleClick">click next year</button>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref, reactive } from '@vue/composition-api';
+//import { logger } from '@/lib/logger';
+
+export default defineComponent({
+  name: 'Home',
+  components: {},
+  setup() {
+    const person1 = ref({ name: 'sehoone1', age: 30 });
+    const person2 = reactive({ name: 'sehoone2', age: 33 });
+
+    let company1 = ref('openobject'); // ref는 원시객체에 사용
+    let company2 = reactive({ company: 'openobject' }); //reactive는 object에 사용. 개체의 반응 복사본을 반환
+
+    const handleClick = () => {
+      /*
+      logger.debug('log test debug');
+      logger.error('log test error');
+      logger.warn('log test warn');
+      logger.info('log test info');
+      console.warn('console test warn');
+      console.error('console test error');
+*/
+      // ref는 function에서 값을 변경할 때 ref.value를 넣어값을 바꿈
+      person1.value.age = ++person1.value.age;
+      //reactive는 바로 값을 바꿈
+      person2.age = ++person2.age;
+
+      company1.value = 'openobject!!';
+      company2.company = 'openobject!@';
+    };
+    return { person1, person2, company1, company2, handleClick };
+  },
+});
+</script>
