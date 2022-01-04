@@ -1,10 +1,51 @@
-import { ActionTree, GetterTree, MutationTree, ActionContext } from 'vuex';
+import { defineStore } from 'pinia';
+import pinia from '@/store';
 import { HellowModel } from '@/service/sample/helloworld/model/helloWorldModel';
 import { getHellowText } from '@/service/sample/helloworld/api/helloWorld';
 
-export interface State {
+export interface HelloWorldState {
   helloText: string;
 }
+
+export const useHelloWorldStore = defineStore({
+  id: 'app-hello-world',
+  state: (): HelloWorldState => ({
+    helloText: '',
+  }),
+  getters: {
+    getHelloText(): string {
+      return this.helloText || '';
+    },
+  },
+  actions: {
+    setHelloText(helloText: string) {
+      this.helloText = helloText ? helloText : '';
+    },
+    /**
+     * @description: reqHelloText
+     */
+    async reqHelloText(): Promise<HellowModel> {
+      try {
+        const data = await getHellowText();
+        const { helloText } = data;
+
+        // save helloText
+        this.setHelloText(helloText);
+        return data;
+      } catch (error) {
+        return Promise.reject(error);
+      }
+    },
+  },
+});
+
+// Need to be used outside the setup
+export function useHelloWorlStoreWithOut(): unknown {
+  return useHelloWorldStore(pinia);
+}
+
+/*
+
 
 const state: State = {
   helloText: '',
@@ -44,3 +85,4 @@ export default {
   actions,
   mutations,
 };
+*/

@@ -8,29 +8,25 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import { mapActions, mapGetters } from 'vuex';
+import { defineComponent, ref } from '@vue/composition-api';
+import { useHelloWorldStore } from '@/service/sample/helloworld/module/helloWorld';
 
-export default Vue.extend({
+export default defineComponent({
   name: 'Home',
   components: {},
-  data() {
-    return {};
-  },
-  computed: {
-    ...mapGetters({
-      helloworldText2: 'helloworld/getHelloText' || '',
-    }),
-  },
-  methods: {
-    ...mapActions('helloworld', ['reqHelloText']),
+  setup() {
+    const helloWorldStore = useHelloWorldStore();
+    let helloworldText2 = ref('');
 
-    async haldleHelloText() {
-      await this.reqHelloText();
-      console.log(
-        'this.$store.state.helloworld ' + this.$store.state.helloworld.helloText
-      );
-    },
+    async function haldleHelloText() {
+      const data = await helloWorldStore.reqHelloText();
+      console.log('haldleHelloText data' + data);
+      helloworldText2.value = data.helloText;
+    }
+    return {
+      haldleHelloText,
+      helloworldText2,
+    };
   },
 });
 </script>
