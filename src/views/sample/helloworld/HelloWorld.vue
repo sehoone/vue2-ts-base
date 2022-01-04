@@ -11,12 +11,12 @@
 import { defineComponent, ref } from '@vue/composition-api';
 import { useHelloWorldStore } from '@/service/sample/helloworld/module/helloWorld';
 
+const helloWorldStore = useHelloWorldStore();
 export default defineComponent({
   name: 'Home',
   components: {},
 
   setup() {
-    const helloWorldStore = useHelloWorldStore();
     let helloworldText1 = ref('');
 
     async function haldleHelloText() {
