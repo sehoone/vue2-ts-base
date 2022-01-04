@@ -1,11 +1,12 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import helloworld from '@/service/sample/helloworld/module/helloWorld';
+
 Vue.use(Vuex);
 
-export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {},
+export const store = new Vuex.Store({
+  modules: {
+    helloworld,
+  },
 });
