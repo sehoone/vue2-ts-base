@@ -107,8 +107,8 @@ export default Vue.extend({
       },
       {
         icon: 'mdi-content-copy',
-        text: 'Duplicates',
-        link: '',
+        text: 'Composition',
+        link: '/sample/composition',
       },
       {
         icon: 'mdi-chevron-up',
