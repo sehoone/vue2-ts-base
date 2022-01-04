@@ -1,13 +1,13 @@
-import { defineStore } from 'pinia';
+import { defineStore, StoreDefinition, Store } from 'pinia';
 import pinia from '@/store';
 import { HellowModel } from '@/service/sample/helloworld/model/helloWorldModel';
 import { getHellowText } from '@/service/sample/helloworld/api/helloWorld';
 
-export interface HelloWorldState {
+interface HelloWorldState {
   helloText: string;
 }
 
-export const useHelloWorldStore = defineStore({
+const helloWorldStore = defineStore({
   id: 'app-hello-world',
   state: (): HelloWorldState => ({
     helloText: '',
@@ -40,13 +40,13 @@ export const useHelloWorldStore = defineStore({
 });
 
 // Need to be used outside the setup
-export function useHelloWorlStoreWithOut(): unknown {
-  return useHelloWorldStore(pinia);
+const helloWorldStoreWithOut = helloWorldStore(pinia);
+
+export function useHelloWorldStore(): typeof helloWorldStoreWithOut {
+  return helloWorldStoreWithOut;
 }
 
 /*
-
-
 const state: State = {
   helloText: '',
 };
