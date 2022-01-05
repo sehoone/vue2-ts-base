@@ -33,6 +33,10 @@ npm install
 ```sh
 npm run serve
 ```
+- Dummy Json Server
+```sh
+npm run jsonserve
+```
 
 ### 4. Source Structure
 
@@ -48,7 +52,10 @@ npm run serve
     ├── layout               # layout
     ├── plugins              # plugin
     ├── libs                 # lib
-    ├── router               # routes
+    ├── router               # router
+       ├── guard             # router before/after 처리
+       ├── routes            # routes
+          ├── 업무           # 업무그룹별 routes 정의
     ├── service              # service
        ├── 업무              # 업무별 패키지 생성
           ├── moduls         # store 및 비즈니스 로직
