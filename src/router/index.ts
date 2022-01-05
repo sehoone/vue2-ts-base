@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 import Home from '@/views/Home.vue';
-import sampleRouter from '@/router/sample/index';
+import sampleRouter from '@/router/routes/sample';
+import { setupRouterGuard } from '@/router/guard';
 
 Vue.use(VueRouter);
 
@@ -21,10 +22,14 @@ const routes: Array<RouteConfig> = [
   },
   ...sampleRouter,
 ];
+
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes,
 });
+
+// 라우터 가드(router before/after) setup
+setupRouterGuard(router);
 
 export default router;
