@@ -1,4 +1,4 @@
-import { defineStore, StoreDefinition, Store } from 'pinia';
+import { defineStore } from 'pinia';
 import pinia from '@/store';
 import { HellowModel } from '@/service/sample/helloworld/model/helloWorldModel';
 import { getHellowText } from '@/service/sample/helloworld/api/helloWorld';
