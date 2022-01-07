@@ -15,7 +15,7 @@
             append-icon=""
           >
             <template v-slot:activator>
-              <v-list-item-content @click="clickGotoLink(item.link)">
+              <v-list-item-content>
                 <v-list-item-title>
                   {{ item.text }}
                 </v-list-item-title>
@@ -26,7 +26,7 @@
               <v-list-item-action v-if="child.icon">
                 <v-icon>{{ child.icon }}</v-icon>
               </v-list-item-action>
-              <v-list-item-content>
+              <v-list-item-content @click="clickGotoLink(child.link)">
                 <v-list-item-title>
                   {{ child.text }}
                 </v-list-item-title>
@@ -106,9 +106,30 @@ export default Vue.extend({
         link: '/sample/helloworld2',
       },
       {
-        icon: 'mdi-content-copy',
+        icon: 'mdi-chevron-up',
+        'icon-alt': 'mdi-chevron-down',
         text: 'Composition',
-        link: '/sample/composition',
+        model: false,
+        link: '',
+        children: [
+          {
+            icon: 'mdi-plus',
+            text: 'Reactive',
+            link: '/sample/reactive',
+          },
+          { icon: 'mdi-plus', text: 'Props', link: '/sample/props' },
+          { icon: 'mdi-plus', text: 'Print', link: '' },
+          {
+            icon: 'mdi-plus',
+            text: 'Undo changes',
+            link: '',
+          },
+          {
+            icon: 'mdi-plus',
+            text: 'Other contacts',
+            link: '',
+          },
+        ],
       },
       {
         icon: 'mdi-chevron-up',
@@ -157,6 +178,7 @@ export default Vue.extend({
   }),
   methods: {
     clickGotoLink(link: string) {
+      console.log('clickGotoLink ' + link);
       if (link !== '' && this.$route.path !== link) {
         this.$router.push(link);
       }

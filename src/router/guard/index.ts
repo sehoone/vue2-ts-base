@@ -7,6 +7,7 @@ import { logger } from '@/utils/logger';
 export function setupRouterGuard(router: Router): void {
   createPermissionGuard(router); // 로그인 권한 체크
   createParamMenuGuard(router); // 메뉴 권한 체크
+  testbeforeResolve(router);
 }
 
 // 사용자의 로그인여부에 따른 처리.(ex. 로그인필요메뉴 로그인여부 or jwt토큰 체크)
@@ -28,6 +29,16 @@ export function createPermissionGuard(router: Router): void {
 export function createParamMenuGuard(router: Router): void {
   router.beforeEach(async (to, from, next) => {
     logger.debug('router.beforeEach createParamMenuGuard');
+    logger.debug('to.path' + to.path + 'from.path ' + from.path);
+    next();
+    return;
+  });
+}
+
+// 사용자의 메뉴 보유권한 처리
+export function testbeforeResolve(router: Router): void {
+  router.beforeResolve(async (to, from, next) => {
+    logger.debug('router.beforeEach testbeforeResolve');
     logger.debug('to.path' + to.path + 'from.path ' + from.path);
     next();
     return;

@@ -65,7 +65,7 @@
             class="subheading mx-3"
             target="_blank"
           >
-            {{ eco.text }}
+            {{ eco.text }} {{ profileInfo.name }} {{ profileInfo.age }}
           </a>
         </v-row>
       </v-col>
@@ -78,7 +78,16 @@ import Vue from 'vue';
 
 export default Vue.extend({
   name: 'HelloWorld',
-
+  props: {
+    profileInfo: {
+      type: Object,
+    },
+  },
+  methods: {
+    clickChild(): void {
+      console.log('child method');
+    },
+  },
   data: () => ({
     ecosystem: [
       {
