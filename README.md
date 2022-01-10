@@ -1,15 +1,17 @@
 # vue2-ts-base
-> Vue-Base for OpenObject
 
-### 1. 기본 구성 환경 
+> Vue2-Base with typescript
+
+### 1. 기본 구성 환경
+
 - Node v16.13.1
 - npm 8.1.2
 - @vue/cli 4.5
 - vue 2.6.11
 - eslint 6.7.2
 
-
 ### 2. 개발 환경
+
 - Visual Studio Code 1.63.2
 - plugins: ESLint
 - plugins: Vetur
@@ -19,21 +21,25 @@
 - plugins: Prettier
 - plugins: PowerShell
 
-
 ### 3. 설치
+
 ```sh
-git clone ssh://git@git.openobject.net:8824/itswoong/vue2-ts-base.git
+git clone https://github.com/sehoone/vue2-ts-base.git
 cd vue2-ts-base
 npm install
 
 ```
 
 ### 4. 서버실행
+
 - Front Server
+
 ```sh
 npm run serve
 ```
+
 - Dummy Json Server
+
 ```sh
 npm run jsonserve
 ```
@@ -73,7 +79,7 @@ npm run jsonserve
   ├── .env.*                 # 환경변수
   ├── eslintrc.js            # eslintrc.js
   ├── .gitignore             # gitignore
-  ├── babel.config.js        # babel.config.json 
+  ├── babel.config.js        # babel.config.json
   ├── package.json           # package.json
   ├── package-lock.json      # package-lock.json
   ├── README.md              # README.md
