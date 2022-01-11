@@ -14,6 +14,7 @@ import { ContentTypeEnum, RequestEnum } from './enum/httpEnum';
 
 /**
  * @description:  axios module
+ * // TODO AXIOS life cycle 정의
  */
 export class BaseAxios {
   private axiosInstance: AxiosInstance;
