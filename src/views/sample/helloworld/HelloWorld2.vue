@@ -4,11 +4,12 @@
     <br /><br />
 
     <p>응답값:{{ helloworldText2 }}</p>
+    <p>응답값(computed):{{ helloworldText2 }}</p>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from '@vue/composition-api';
+import { defineComponent, ref, computed } from '@vue/composition-api';
 import { useHelloWorldStore } from '@/service/sample/helloworld/module/helloWorld';
 
 export default defineComponent({
@@ -18,6 +19,8 @@ export default defineComponent({
     const helloWorldStore = useHelloWorldStore();
     let helloworldText2 = ref('');
 
+    const helloworldText3 = computed(() => helloWorldStore.getHelloText);
+
     async function haldleHelloText() {
       const data = await helloWorldStore.reqHelloText();
       console.log('haldleHelloText data' + data);
@@ -26,6 +29,7 @@ export default defineComponent({
     return {
       haldleHelloText,
       helloworldText2,
+      helloworldText3,
     };
   },
 });
