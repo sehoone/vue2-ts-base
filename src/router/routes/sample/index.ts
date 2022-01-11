@@ -1,7 +1,17 @@
-import DefaultLayout from '@/layouts/sample/DefaultLayout.vue';
-import Helloworld from '@/views/sample/helloworld/HelloWorld.vue';
-import Helloworld2 from '@/views/sample/helloworld/HelloWorld2.vue';
-import Composition from '@/views/sample/composition/Composition.vue';
+const DefaultLayout = (): Promise<typeof import('*.vue')> =>
+  import(/* webpackChunkName: "sample" */ '@/layouts/sample/DefaultLayout.vue');
+const Helloworld = (): Promise<typeof import('*.vue')> =>
+  import(
+    /* webpackChunkName: "sample" */ '@/views/sample/helloworld/HelloWorld.vue'
+  );
+const Helloworld2 = (): Promise<typeof import('*.vue')> =>
+  import(
+    /* webpackChunkName: "sample" */ '@/views/sample/helloworld/HelloWorld2.vue'
+  );
+const Composition = (): Promise<typeof import('*.vue')> =>
+  import(
+    /* webpackChunkName: "sample" */ '@/views/sample/composition/Composition.vue'
+  );
 
 export default [
   {
