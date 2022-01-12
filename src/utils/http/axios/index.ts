@@ -141,5 +141,17 @@ function createAxios(opt?: Partial<CreateAxiosOptions>) {
     )
   );
 }
-// TODO createAxios opt 추가
+/**
+ * @description: defHttp
+ * axios 디폴트 옵션으로 생성
+ * ex. defHttp.get<HellowModel>({ url: Api.GetHellowWorld });
+ */
 export const defHttp = createAxios();
+
+/**
+ * @description: defHttpOpt
+ * axios 커스텀 옵션으로 생성. 디폴트 설정에서 커스텀이 필요한 필드와 merge
+ * ex. defHttpOpt({ timeout: 200 * 1000 }).get<HellowModel>({url: Api.GetHellowWorld,});
+ */
+export const defHttpOpt = (opt?: Partial<CreateAxiosOptions>): BaseAxios =>
+  createAxios(opt);
